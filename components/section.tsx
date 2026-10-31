@@ -5,9 +5,9 @@ import { cn } from "cn"
 const sectionVariants = cva("relative w-full scroll-mt-16", {
   variants: {
     spacing: {
-      default: "py-20 md:py-28",
-      sm: "py-12 md:py-16",
-      lg: "py-28 md:py-40",
+      default: "py-16 md:py-20",
+      sm: "py-10 md:py-12",
+      lg: "py-24 md:py-28",
     },
     tone: {
       default: "bg-background text-foreground",
