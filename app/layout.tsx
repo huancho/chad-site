@@ -2,9 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { Schibsted_Grotesk, Young_Serif } from "next/font/google"
 
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
-import { themeColors } from "@/lib/theme-colors"
 import { cn } from "@/lib/utils";
 
 const youngSerif = Young_Serif({
@@ -27,7 +25,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   viewportFit: "cover",
-  themeColor: themeColors.light,
+  // The sRGB value of --background in globals.css.
+  themeColor: "#faf5ec",
 }
 
 export default function RootLayout({
@@ -38,7 +37,6 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      suppressHydrationWarning
       className={cn(
         "font-sans antialiased [font-synthesis:none]",
         youngSerif.variable,
@@ -46,10 +44,8 @@ export default function RootLayout({
       )}
     >
       <body>
-        <ThemeProvider>
-          {children}
-          <Toaster />
-        </ThemeProvider>
+        {children}
+        <Toaster />
       </body>
     </html>
   )
