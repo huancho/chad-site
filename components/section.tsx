@@ -2,7 +2,7 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "cn"
 
-const sectionVariants = cva("relative w-full scroll-mt-16", {
+const sectionVariants = cva("relative w-full", {
   variants: {
     spacing: {
       default: "py-16 md:py-20",
@@ -36,18 +36,22 @@ function Section({
   )
 }
 
-const containerVariants = cva("mx-auto w-full px-6 md:px-8", {
-  variants: {
-    size: {
-      default: "max-w-6xl",
-      sm: "max-w-3xl",
-      lg: "max-w-7xl",
+// A phone in landscape puts its notch at the side, so the gutter grows to clear it.
+const containerVariants = cva(
+  "mx-auto w-full pr-[max(1.5rem,env(safe-area-inset-right))] pl-[max(1.5rem,env(safe-area-inset-left))] md:pr-[max(2rem,env(safe-area-inset-right))] md:pl-[max(2rem,env(safe-area-inset-left))]",
+  {
+    variants: {
+      size: {
+        default: "max-w-6xl",
+        sm: "max-w-3xl",
+        lg: "max-w-7xl",
+      },
     },
-  },
-  defaultVariants: {
-    size: "default",
-  },
-})
+    defaultVariants: {
+      size: "default",
+    },
+  }
+)
 
 function Container({
   className,

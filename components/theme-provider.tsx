@@ -3,6 +3,8 @@
 import * as React from "react"
 import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
 
+import { themeColors } from "@/lib/theme-colors"
+
 function ThemeProvider({
   children,
   ...props
@@ -10,15 +12,35 @@ function ThemeProvider({
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="system"
+      defaultTheme="light"
       enableSystem
       disableTransitionOnChange
       {...props}
     >
-      <ThemeHotkey />
+      <ThemeColorSync />
+      {/* A bare letter key is a trap for speech-input users, so the shortcut
+          stays a development aid. Visitors have the header toggle. */}
+      {process.env.NODE_ENV === "development" ? <ThemeHotkey /> : null}
       {children}
     </NextThemesProvider>
   )
+}
+
+// The theme follows a class, not the OS setting, so a media-keyed meta tag would
+// leave the phone's browser chrome on the wrong color after a toggle.
+function ThemeColorSync() {
+  const { resolvedTheme } = useTheme()
+
+  React.useEffect(() => {
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute(
+        "content",
+        resolvedTheme === "dark" ? themeColors.dark : themeColors.light
+      )
+  }, [resolvedTheme])
+
+  return null
 }
 
 function isTypingTarget(target: EventTarget | null) {
