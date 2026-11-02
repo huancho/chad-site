@@ -63,14 +63,14 @@ function Hero() {
                 src={photos.hero.src}
                 width={photos.hero.width}
                 height={photos.hero.height}
-                alt="Camion chargé, vu de dos, sur une longue route droite qui traverse une plaine désertique dans la brume de sable"
-                // The truck is small in the frame, so the image is zoomed around
-                // it and the file has to match that full zoomed width: frame
-                // height x 16:9 x the 1.4 scale, for each frame aspect ratio.
-                sizes="(min-width: 1024px) 1600px, (min-width: 640px) 166vw, 218vw"
+                alt="Vue aérienne de piles de conteneurs colorés dans un terminal portuaire"
+                // Rendered width of the landscape photo covering each frame: its
+                // 576px height on desktop and full width on tablet. Phones would
+                // need 145vw for full sharpness, but ask for less to load faster.
+                sizes="(min-width: 1024px) 835px, (min-width: 640px) 100vw, 95vw"
                 preload
                 style={{ backgroundColor: photos.hero.color }}
-                className="size-full origin-[52%_70%] scale-140 object-cover object-[82%_50%] [filter:sepia(.5)_hue-rotate(-14deg)_saturate(1.3)] lg:object-[72%_50%]"
+                className="size-full object-cover"
               />
             </div>
             <WovenBand className="text-primary" />

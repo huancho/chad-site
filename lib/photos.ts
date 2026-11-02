@@ -13,16 +13,13 @@ const referral = "?utm_source=proposal_demo&utm_medium=referral"
 
 export const photos = {
   hero: {
-    src: unsplash(
-      "photo-1785412222341-d4eac554748e",
-      "M3wxMTE4NjM0fDB8MXxzZWFyY2h8NXx8c2VtaSUyMHRydWNrJTIwcmVhciUyMHZpZXclMjBkZXNlcnQlMjByb2FkfGVufDF8MHx8fDE3OTM2NTkyOTV8MA"
-    ),
-    width: 2400,
-    height: 1351,
-    color: "#c0c0c0",
+    src: "/hero-conteneurs.webp",
+    width: 1920,
+    height: 1325,
+    color: "#282828",
     credit: {
-      name: "Mohamed Abira",
-      profile: `https://unsplash.com/@moroccopictures${referral}`,
+      name: "Cosmin Andrei Buzamat",
+      profile: `https://unsplash.com/@cos592${referral}`,
     },
   },
   ciment: {
